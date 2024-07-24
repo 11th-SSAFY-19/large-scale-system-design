@@ -10,11 +10,11 @@
   
   ### 유일 ID 생성기
   
-  - **`AUTOI_INCREMENT` 속성이 설정된 관계형 데이터베이스의 기본 키**
+  - **`AUTO_INCREMENT` 속성이 설정된 관계형 데이터베이스의 기본 키**
       - 분산환경에서 데이터베이스 한 대로는 요구를 감당할 수 없음
       - 여러 데이터베이스 서버를 쓰는 경우에는 지연시간(delay)을 낮추기 힘듬
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/74b49dc1-9d6b-4aa8-a083-7701f98983d8/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/164955a1-9971-4e37-a8c7-3b4052f96cae" width="400px" />
       
   
   ### 1단계: 문제 이해 및 설계 범위 확정
@@ -58,7 +58,8 @@
   
   - **구성**
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/ba779805-1e9f-40e2-9cdd-f55574daa4a3/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/903bb386-0aaf-4984-956b-6ca726dca7dd" width="100px"/>
+
       
   - **데이터베이스의 `auto_increment` 기능 활용**
       - ID의 값을 구할 때 `k`만큼 증가, `k`는 사용 중인 **데이터베이스 서버 수**
@@ -83,7 +84,8 @@
   - UUID는 서버 간 조율 없이 독립적으로 생성 가능
   - **UUID를 사용하는 시스템 구조**
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/c82faf81-108f-4599-ad23-978e43fbf6a2/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/bdae8831-47a7-4e51-a928-aff9223b9669" witdth="400px"/>
+
       
       - **각 웹 서버는 별도의 ID 생성기를 사용**해 독립적으로 ID를 만들어 냄
   - **장점**
@@ -102,7 +104,7 @@
       - 플리커(Flickr)가 분산 기본 키(Distributed Primary Key)를 만들어 내기 위해 사용
   - **티켓 서버 구조**
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/232d9822-e5b1-4497-aeab-3d87de4301a9/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/3e0b59cd-53f8-474f-b3a9-27c761447d67" width="400px"/>
       
   - **장점**
       - 유일성이 보장되는 오직 숫자로만 구성된 ID를 쉽게 만들 수 있음
@@ -118,7 +120,8 @@
       - 생성해야 하는 **ID의 구조를 여러 절(Section)로 분할**
       - **64bit ID 구조**
           
-          ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/1b065f50-4253-4099-85d2-a96f10f34d0b/Untitled.png)
+        <img src="https://github.com/user-attachments/assets/7189daa9-c2a5-4142-9cfd-5b6393780d10" width="400px"/>
+
           
       - **사인(Sign) 비트**
           - 1bit 힐당
@@ -157,7 +160,8 @@
       - 타임스팸프는 시간의 흐름에 따라 점점 큰 값을 가짐, **ID는 시간순으로 정렬됨**
       - **예제) ID 구조를 따른 이진 표현 형태로부터 UTC 시각 추출**
           
-          ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/9c2cd09b-adb7-4557-bb80-ebfd0c200aea/Untitled.png)
+        <img src="https://github.com/user-attachments/assets/5f9b6f1f-9f09-480b-912d-e18662d02ed5" width="400px"/>
+
           
           - 역으로 적용하면 UTC 시각을 타임스탬프로 변환 가능
       - **41bit로 표현** 타임스탬프의 최댓값 : $2^41-1=2199023255551$밀리초 **약 69년**
