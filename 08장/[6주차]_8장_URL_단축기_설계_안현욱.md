@@ -63,12 +63,13 @@
   
   - **브라우저에 단축 URL 입력**
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/7fe288e0-9e5d-4931-9a50-04a589a725fc/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/0da73d47-bfba-4737-85db-e347bca13878" width="400px"/>
+
       
       - 단축 URL을 받은 서버는 원래 URL로 바꾸어 **301 응답의 Location Header**에 넣어 반환
   - **클라이언트와 서버 사이의 통신 절차**
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/53fcc529-eefe-451c-8900-fbe924b3cb5a/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/9f125601-536d-42aa-863c-df4716412d3a" width="400px"/>
       
       - **301 Permanently Moved**
           - 해당 URL에 대한 HTTP 요청의 처리 **책임이 영구적으로 반환된 URL로 이전**
@@ -90,7 +91,9 @@
   - 단축 URL : `www.tinyurl.com/{hashValue}`
   - **긴 URL을 이 해시 값으로 대응시킬 해시 함수 fx 찾기**
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/0730868c-7e0f-4ee1-9c6d-5c4171ad8ef6/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/86af5524-1f9a-45f5-b114-3ac38dd9be92" width="400px"/>
+
+
       
       - 입력으로 주어지는 긴 URL이 다른 값이면 해시 값도 달라야 한다
       - 계산된 해시 값은 원래 입력으로 주어졌던 긴 URL로 복원될 수 있어야 한다
@@ -109,7 +112,8 @@
   - 해시 테이블에 저장 : 메모리는 유한하고 비쌈
   - **관계형 데이터베이스에 저장**
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/2d65efa9-4703-42d0-9a39-6f51537b519e/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/c3c47a97-c873-44f2-9dce-a1dd40fb75da" width="400px"/>
+
       
   
   ### 해시 함수
@@ -121,21 +125,24 @@
       - 사용할 수 있는 문자의 개수 10+26+26=62개
       - hashValue의 길이를 정하기 위해 $62^n ≥ 3650억$인 $n$의 최솟값을 찾아야 함, $n=7$
           
-          ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/c9289c88-3459-4dd2-892d-5c619a690f3d/Untitled.png)
+        <img src="https://github.com/user-attachments/assets/c006f68b-83a3-468c-8414-5dc3097bbca1" width="400px"/>
+
           
   - **해시 후 충돌 해소**
       - 긴 URL을 줄이려면 **원래 URL을 7글자 문자열로 줄이는 해시 함수**가 필요
       - 손쉬운 방법 : `CRC32`, `MD5`, `SHA-1` 같은 잘 알려진 해시 함수 활용
       - 예시) `https://en.wikipedia.org.wiki.Systems_design` 축약
           
-          ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/7f5a903d-1eca-4c56-a504-0cd470f9d187/Untitled.png)
+        <img src="https://github.com/user-attachments/assets/f369f6c4-5de4-416b-9476-d4685ef9f2d8" width="400px"/>
+
           
           - 7문자로 더 줄여야 함
       - **계산된 해시 값에서 처음 7개 글자만 이용**
           - 해시 결과가 충돌할 확률이 높아짐
           - 충돌이 실제로 발생했을 때는 충돌이 해소될 때까지 사전에 정한 문자열을 해시값데 덧붙임
           
-          ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/2e9abfaa-d1ec-4f7c-a088-2ad3eb7ddc6f/Untitled.png)
+        <img src="https://github.com/user-attachments/assets/058169d2-3fd3-4202-9560-4bb885daa30a" width="400px"/>
+
           
           - 한번 이상 **데이터베이스에 질의**가 필요 : 오버헤드가 큼
           - 데이터베이스 대신 **블룸 필터**를 사용하면 성능을 높일 수 있음
@@ -148,12 +155,14 @@
       - 62진법을 쓰는 이유 : hashValue에 사용할 수 있는 문자(Character) 개수가 62개
       - ex) $11157_{10} → 2TX_{62}$
           
-          ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/91ddbc98-c8cf-4bbe-b610-ea025a847b7d/Untitled.png)
+        <img src="https://github.com/user-attachments/assets/c4d2563b-2481-41e0-9fcd-db1acad188fc" width="400px"/>
+
           
           - 단축 URL : `https://tinyurl.com/2TX`
   - **두 접근법 비교**
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/5250db57-fa0d-4442-acc9-4c19a5c4386b/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/5cf791ca-cdab-4e81-80fc-5d7f383b04fc" width="400px"/>
+
       
   
   ### URL 단축기 상세 설계
@@ -163,7 +172,8 @@
       - 언제나 동작하는 상태로 유지되어야 함
   - **URL 단축기 처리 흐름**
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/0cd8a766-ea87-479c-b160-9002cf16fb5a/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/2616344f-5d8d-4cf8-b636-7a72006de5e5" width="400px"/>
+
       
       - 1️⃣ 입력으로 긴 URL을 받음
       - 2️⃣ 데이터베이스에 해당 URL이 있는지 검사
@@ -173,14 +183,16 @@
       - 6️⃣ ID, 단축 URL 원래 URL로 새 DB 레코드 생성, 단축 URL 클라이언트에 전달
   - **예시)**
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/83a92d98-0787-4766-a6aa-c304b887bd0c/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/8d08f91c-d9ce-4c01-a2e5-18d505d83ab4" width="400px"/>
+
       
   
   ### URL 리디렉션 상세 설계
   
   - **URL Redirection 메커니즘**
       
-      ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/564a8822-b76c-4de9-a961-41b4ac6503a6/5c2b57c4-cf25-42e0-84bf-cccebaebbe4c/Untitled.png)
+    <img src="https://github.com/user-attachments/assets/b399aaeb-68cd-4a37-95b9-73fa8c285586" width="400px"/>
+
       
   - **캐싱(Caching) 적용**
       - 쓰기보다 읽기가 더 많은 시스템
